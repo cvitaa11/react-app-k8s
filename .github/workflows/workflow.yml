@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: docker login
+        env:
+          CR_USERNAME: ${{ secrets.CR_USERNAME }}
+          PAT: ${{ secrets.PAT }}
+        run: |
+          docker login https://docker.pkg.github.com -u $CR_USERNAME -p $PAT
+      - name: build react-app Docker image
+        run: |
+          docker build --pull --rm -f ./Dockerfile -t docker.pkg.github.com/${{ secrets.CR_USERNAME }}/react-app-k8s/react-app .
+      - name: push react-app to GitHub Packages
+        run: |
+          docker.pkg.github.com/${{ secrets.CR_USERNAME }}/react-app-k8s/react-app
