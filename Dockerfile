@@ -21,7 +21,7 @@ COPY .env .
 # Add bash
 RUN apk add --no-cache bash
 
-# Make our shell script executable
+# Make shell script executable
 RUN chmod +x env.sh
 
 # Start Nginx server
