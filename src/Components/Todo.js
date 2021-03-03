@@ -1,13 +1,29 @@
 import { Card } from "react-bootstrap";
+import axios from "axios";
+import { apiUrl } from "../Config/Url";
 
-const Todo = ({ title, desc }) => {
+const Todo = ({ todo, setUpdate }) => {
+  const deleteTodo = (id) => {
+    axios
+      .delete(`${apiUrl}/Todo/${id}`)
+      .then((res) => {
+        setUpdate(new Date());
+        alert(JSON.stringify(res.data.message));
+      })
+      .catch((err) => console.log(err.response));
+  };
+
   return (
     <Card style={{ width: "18rem", margin: 10 }}>
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>{desc}</Card.Text>
-        <Card.Link href="#">Done</Card.Link>
-        <Card.Link href="#">Remove</Card.Link>
+        <Card.Title>{todo.title}</Card.Title>
+        <Card.Text>{todo.description}</Card.Text>
+        <Card.Link
+          style={{ cursor: "pointer" }}
+          onClick={() => deleteTodo(todo.id)}
+        >
+          Remove
+        </Card.Link>
       </Card.Body>
     </Card>
   );

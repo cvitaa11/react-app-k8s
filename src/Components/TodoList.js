@@ -6,23 +6,21 @@ import { apiUrl } from "../Config/Url";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
+  const [update, setUpdate] = useState(new Date());
 
   useEffect(() => {
     axios
       .get(`${apiUrl}/Todo`)
       .then((res) => setTodos(res.data))
       .catch((err) => console.log(err.response));
-  }, []);
+  }, [update]);
 
   return (
     <Container fluid>
-      <p>
-        <strong>Environment var:</strong> {apiUrl}
-      </p>
       <Row>
         {todos.length !== 0
           ? todos.map((todo) => (
-              <Todo key={todo.id} title={todo.title} desc={todo.description} />
+              <Todo key={todo.id} todo={todo} setUpdate={setUpdate} />
             ))
           : "There are no todos"}
       </Row>
