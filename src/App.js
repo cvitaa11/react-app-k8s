@@ -1,12 +1,15 @@
 import Header from "./Components/Header";
 import TodoList from "./Components/TodoList";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Header />
-      <TodoList />
-    </div>
+      <Switch>
+        <Route exact path="/" component={TodoList} />
+      </Switch>
+    </Router>
   );
 }
 

@@ -16,6 +16,9 @@ const TodoList = () => {
 
   return (
     <Container fluid>
+      <p>
+        <strong>Environment var:</strong> {apiUrl}
+      </p>
       <Row>
         {todos.length !== 0
           ? todos.map((todo) => (
