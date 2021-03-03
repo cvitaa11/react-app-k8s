@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+      - name: pg-api-container
+        image: docker.pkg.github.com/cvitaa11/react-app-k8s/react-app:latest
+        imagePullPolicy: Always        
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env:
+          - name: REACT_APP_API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: react-config
+                key: api-url
+      imagePullSecrets: 
+        - name: cr-secret
