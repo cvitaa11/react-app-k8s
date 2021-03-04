@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+        env:
+          TAG: $(git log -1 --pretty=%h)
       - name: docker login
         env:
           CR_USERNAME: ${{ secrets.CR_USERNAME }}
@@ -20,7 +21,7 @@ jobs:
           docker login https://docker.pkg.github.com -u $CR_USERNAME -p $PAT
       - name: build react-app Docker image
         run: |
-          docker build --pull --rm -t docker.pkg.github.com/${{ secrets.CR_USERNAME }}/react-app-k8s/react-app .
+          docker build --pull --rm -t docker.pkg.github.com/${{ secrets.CR_USERNAME }}/react-app-k8s/react-app:$TAG .
       - name: push react-app to GitHub Packages
         run: |
-          docker push docker.pkg.github.com/cvitaa11/react-app-k8s/react-app
+          docker push docker.pkg.github.com/cvitaa11/react-app-k8s/react-app:$TAG
