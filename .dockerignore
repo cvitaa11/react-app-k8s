@@ -1,2 +1,4 @@
 node_modules
 # Temporary env files
+/public/env-config.js
+env-config.js
