@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: react-app-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: react-app
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pg-api-container
-        image: docker.pkg.github.com/cvitaa11/react-app-k8s/react-app:latest
+        image: docker.pkg.github.com/cvitaa11/react-app-k8s/react-app:99a6a32c8eef2ff0266b890918d1a349b3c552a8
         imagePullPolicy: Always        
         resources:
           limits:
