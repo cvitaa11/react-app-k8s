@@ -1,8 +1,11 @@
+@font-face {
+  font-family: "TeleGroteskNext";
+  src: local("TeleGroteskNext"),
+    url(./Resources/Fonts/telegrotesknext-regular.woff) format("woff");
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "TeleGroteskNext" !important; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,14 +1,17 @@
-import Header from "./Components/Header";
-import TodoList from "./Components/TodoList";
+import Header from "./Components/Layout/Header";
+import TodoList from "./Components/Todo/TodoList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AuthContextProvider from "./Contexts/AuthContext";
 
 function App() {
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={TodoList} />
-      </Switch>
+      <AuthContextProvider>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={TodoList} />
+        </Switch>
+      </AuthContextProvider>
     </Router>
   );
 }
