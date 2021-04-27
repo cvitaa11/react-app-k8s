@@ -1,11 +1,9 @@
 import { Card } from "react-bootstrap";
-import axios from "axios";
-import { apiUrl } from "../../Config/Url";
+import {todoService} from "../../Services/TodoService"
 
 const Todo = ({ todo, setUpdate }) => {
   const deleteTodo = (id) => {
-    axios
-      .delete(`${apiUrl}/Todo/${id}`)
+    todoService.deleteTodo(id)
       .then((res) => {
         setUpdate(new Date());
         alert(JSON.stringify(res.data.message));

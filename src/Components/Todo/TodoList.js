@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Container, Row } from "react-bootstrap";
 import Todo from "./Todo";
-import { apiUrl } from "../../Config/Url";
+import {todoService} from "../../Services/TodoService"
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [update, setUpdate] = useState(new Date());
 
   useEffect(() => {
-    axios
-      .get(`${apiUrl}/Todo`)
-      .then((res) => setTodos(res.data))
-      .catch((err) => console.log(err.response));
+    todoService.getTodos().then(res => setTodos(res.data)).catch(err => console.log(err));
   }, [update]);
 
   return (
