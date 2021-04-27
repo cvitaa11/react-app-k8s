@@ -22,7 +22,7 @@ const TodoList = () => {
           ? todos.map((todo) => (
               <Todo key={todo.id} todo={todo} setUpdate={setUpdate} />
             ))
-          : "There are no todos"}
+          : <h3 className="no-todos">There are no todos</h3>}
       </Row>
     </Container>
   );

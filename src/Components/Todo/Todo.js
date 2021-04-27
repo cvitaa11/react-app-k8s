@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
 import axios from "axios";
-import { apiUrl } from "../Config/Url";
+import { apiUrl } from "../../Config/Url";
 
 const Todo = ({ todo, setUpdate }) => {
   const deleteTodo = (id) => {
