@@ -1,6 +1,8 @@
 # react-app-k8s
 
-Note for k8s: Order of creation matters!
+If you want to run application locally without Docker use `npm run dev`.
+
+To create Kubernetes manifests use `kubectl apply` apply command. Note that order of creation matters.
 
 ## Create ConfigMap
 
