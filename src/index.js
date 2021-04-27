@@ -8,7 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Import Custom CSS
-import "./Resources/Styles/Dashboard.css"
+import "./Resources/Styles/Dashboard.css";
 
 ReactDOM.render(
   <React.StrictMode>
