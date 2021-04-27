@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Row } from "react-bootstrap";
 import Todo from "./Todo";
-import { apiUrl } from "../Config/Url";
+import { apiUrl } from "../../Config/Url";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
