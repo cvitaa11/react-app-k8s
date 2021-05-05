@@ -1,21 +1,26 @@
-import Header from "./Components/Layout/Header";
-import TodoList from "./Components/Todo/TodoList";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import AuthContextProvider from "./Contexts/AuthContext";
-import GlobalContextProvider from "./Contexts/GlobalContext";
 import PublicRoute from "./Routes/PublicRoute";
+import Layout from "./Components/Layout/Layout";
+import TodoList from "./Components/Todo/TodoList";
+import About from "./Components/Common/About";
+import Contact from "./Components/Common/Contact";
 
 function App() {
   return (
     <Router>
-      <GlobalContextProvider>
-        <AuthContextProvider>
-          <Header />
-          <Switch>
-            <PublicRoute exact path="/" component={TodoList} />
-          </Switch>
-        </AuthContextProvider>
-      </GlobalContextProvider>
+      <AuthContextProvider>
+        <Switch>
+          <PublicRoute exact path="/" layout={Layout} component={TodoList} />
+          <PublicRoute exact path="/about" layout={Layout} component={About} />
+          <PublicRoute
+            exact
+            path="/contact"
+            layout={Layout}
+            component={Contact}
+          />
+        </Switch>
+      </AuthContextProvider>
     </Router>
   );
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import { Modal } from "bootstrap";
 
 const StatusModal = ({ show, handleHide, text }) => {

@@ -2,14 +2,20 @@ import { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ layout: Layout, component: Component, ...rest }) => {
   const { isLogged } = useContext(AuthContext);
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        isLogged ? <Component {...props} /> : <Redirect to="/" />
+        isLogged ? (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        ) : (
+          <Redirect to="/" />
+        )
       }
     />
   );
