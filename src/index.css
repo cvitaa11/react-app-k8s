@@ -3,14 +3,38 @@
   src: local("TeleGroteskNext"),
     url(./Resources/Fonts/telegrotesknext-regular.woff) format("woff");
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: "TeleGroteskNext" !important; 
+  font-family: "TeleGroteskNext" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  z-index: 3;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.navbar-link:hover {
+  color: #d2d2d2;
 }

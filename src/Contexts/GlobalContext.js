@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import StatusModal from "../Components/Common/StatusModal";
 
 export const GlobalContext = createContext();
 
@@ -11,13 +10,8 @@ const GlobalContextProvider = (props) => {
   });
 
   return (
-    <GlobalContext.Provider value={{ setStatusModal }}>
+    <GlobalContext.Provider value={{ statusModal, setStatusModal }}>
       {props.children}
-      <StatusModal
-        show={statusModal.show}
-        text={statusModal.text}
-        handleHide={statusModal.handleHide}
-      />
     </GlobalContext.Provider>
   );
 };
